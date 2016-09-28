@@ -19,11 +19,11 @@ body {
     background: #333;
     color: #fff;
     border: 1px solid #ccc;
-    padding-bottom: 2px;
+    padding-bottom: 12px;
     font-weight: bold;
 }
 .songs {
-    margin-bottom: 60px;
+    margin-bottom: 20px;
 }
 .song-container {
     min-height: 56px;

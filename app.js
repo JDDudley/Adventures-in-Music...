@@ -32,7 +32,7 @@ function drawSongs(songList){
         if (!preview) {
             preview = '';
         } else {
-            preview = `<a onclick="document.getElementById('audio-${i}').play()"><span class="glyphicon glyphicon-play play-icon"></span></a><a onclick="document.getElementById('audio-${i}').pause()"><span class="glyphicon glyphicon-pause play-icon"></span></a><br>
+            preview = `<a onclick="audioController(${i})"><span class="glyphicon glyphicon-play play-icon" id="play-${i}"></span></a><br>
                                             <audio id="audio-${i}">
                                                 <source src="${preview}">
                                             </audio>`
@@ -41,12 +41,12 @@ function drawSongs(songList){
         template += `<li class="list-group-item song-container">
                                 <div class="container-fluid">
                                     <div class="row">
-                                        <div class="col-xs-9">
+                                        <div class="col-xs-9 col-sm-10">
                                             <img src="${albumArt}" class="thumb">
                                             <h4 class="song-title">${title}</h4>
                                             <p class="artist-album"><span class="artist-name">${artist}</span><span class="album-name">${collection}</span></p>
                                         </div>
-                                        <div class="col-xs-3 right-song-info">
+                                        <div class="col-xs-3 col-sm-2 right-song-info">
                                             ${preview}
                                             <p class="price">${price}</p>
                                         </div>
@@ -56,4 +56,44 @@ function drawSongs(songList){
     }
 //write template variable to page
     document.getElementById('song-list').innerHTML = template;
+}
+
+//audio controller lets one button switch between play and pause control
+//also loops through to ensure all other audio is paused before playing requested song
+function audioController(i) {
+//loop through other audio to make sure paused
+/****
+ * JAKE:
+ * In this loop to check all existing audio elements on the page, I wasn't sure how to best get
+ * the total number (songList.length at one point earlier in execution, but no longer available)
+ * Set to 50 because I think that's the max printed but will this hit a shitload of errors
+ * looping through a page where there are only, say, 10 results?
+ */
+    for (j=0; j < 50; j++) {
+        var audio = document.getElementById(`audio-${j}`);
+        var button = document.getElementById(`play-${j}`);
+        if (button.className == "glyphicon glyphicon-pause play-icon") {
+            audio.pause();
+            button.className = "glyphicon glyphicon-play play-icon";
+        }
+    }
+//now play or pause requested song
+    audio = document.getElementById(`audio-${i}`);
+    button = document.getElementById(`play-${i}`);
+    var curClass = button.className;
+    if (curClass == "glyphicon glyphicon-play play-icon") {
+        audio.play();
+        button.className = "glyphicon glyphicon-pause play-icon";
+    } else {
+        audio.pause();
+        button.className = "glyphicon glyphicon-play play-icon";
+    }
+//this is supposedly 'proper code' to handle all cases but not currently working correctly
+    // if (audio.paused && audio.currentTime > 0 && !audio.ended) {
+    //     audio.play();
+    //     button.className = "glyphicon glyphicon-pause play-icon";
+    // } else {
+    //     audio.pause();
+    //     button.className = "glyphicon glyphicon-play play-icon";
+    // }
 }
