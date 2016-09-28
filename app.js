@@ -58,9 +58,7 @@ function drawSongs(songList){
     document.getElementById('song-list').innerHTML = template;
 }
 
-//audio controller lets one button switch between play and pause control
-//also loops through to ensure all other audio is paused before playing requested song
-function audioController(i) {
+function pauseAudio() {
 //loop through other audio to make sure paused
 /****
  * JAKE:
@@ -77,11 +75,16 @@ function audioController(i) {
             button.className = "glyphicon glyphicon-play play-icon";
         }
     }
+}
+//audio controller lets one button switch between play and pause control
+//also loops through to ensure all other audio is paused before playing requested song
+function audioController(i) {
 //now play or pause requested song
     audio = document.getElementById(`audio-${i}`);
     button = document.getElementById(`play-${i}`);
     var curClass = button.className;
     if (curClass == "glyphicon glyphicon-play play-icon") {
+        pauseAudio();
         audio.play();
         button.className = "glyphicon glyphicon-pause play-icon";
     } else {
