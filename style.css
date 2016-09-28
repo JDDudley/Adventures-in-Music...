@@ -61,6 +61,8 @@ body {
     margin-top: -6px;
     font-family: Georgia, 'Times New Roman', Times, serif;
     font-size: 1em;
+    margin-left: 3.3em;
+    text-indent: 0em;
 }
 .album-name {
     font-style: italic;
@@ -71,6 +73,7 @@ body {
     margin-top: 4px;
     margin-right: 0px;
     font-family: Georgia, 'Times New Roman', Times, serif;
+    position: relative;
 }
 .play-icon, .play-icon a {
     font-size: 1.5em;
@@ -87,4 +90,7 @@ body {
     font-family: Arial, Helvetica, sans-serif;
     margin-right: 4px;
     margin-top: 4px;
+    position: absolute;
+    bottom: 50;
+    right: 12;
 }
