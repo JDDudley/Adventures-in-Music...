@@ -28,7 +28,7 @@ function drawSongs(songList){
             price = '$' + price;
         }
 //handle missing music
-//generate html here as well to hide play/pause controls if no tune
+//generate html here as well to hide play/pause control if no tune
         if (!preview) {
             preview = '';
         } else {

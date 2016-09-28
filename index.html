@@ -1,11 +1,17 @@
 <html>
   <head>
     <title>Adventures in Music</title>
+    <!--bootstrap-->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css"/>
+    <!--google fonts - pacifico-->
     <link href="https://fonts.googleapis.com/css?family=Pacifico" rel="stylesheet">
+    <!--custom stylesheet-->
     <link rel="stylesheet" href="style.css">
+    <!--jquery-->
     <script src="https://code.jquery.com/jquery-2.2.3.min.js"></script>
+    <!--itunes api interaction-->
     <script src="itunes-service.js"></script>
+    <!--custom javascript for drawSongs and audioController-->
     <script src="app.js"></script>
   </head>
   <body>
@@ -15,6 +21,7 @@
                 <div class="col-xs-12 search-bar">
                     <form class="form-inline">
                         <div class="input-group">
+                            <!--use onkeydown on input text box to allow enter/return to run getMusic() function-->
                             <input type="text" class="form-control input-sm" id="artist" placeholder="Artist..."  onkeydown="if (event.keyCode == 13) { getMusic(); return false; }"/>
                             <span class="input-group-btn">
                                 <button type="button" class="btn btn-info btn-search input-sm" id="get-music-button" onclick="getMusic()">SEARCH</button>
@@ -26,6 +33,7 @@
             <div class="row">
                 <div class="col-xs-12 col-sm-8 col-md-7 col-lg-7">
                     <div class="songs">
+                        <!--this ul will be overwritten with results from search-->
                         <ul id="song-list" class="list-group">
                             <br><br>
                                 <h1 class="title text-center">adventures</h1>
