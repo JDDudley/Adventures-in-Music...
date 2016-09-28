@@ -1,0 +1,43 @@
+<!--
+
+Unused floating glyph icon for play/pause
+
+                                            <!--<a href="#" onclick="this.firstChild.play()">-->
+                                            <span class="glyphicon glyphicon-play-circle play-icon" id="button-1" onclick="this.firstChild.play();">
+                                                </span></a>
+
+
+Function in Javascript
+
+function audioController() {
+    var audio = document.getElementById('audio-1');
+    var button = document.getElementById('play-1');
+    audio.play();
+    if (audio.paused && audio.currentTime > 0 && !audio.ended) {
+        audio.play();
+        button.className = "glyphicon glyphicon-pause play-icon";
+    } else {
+        audio.pause();
+        button.className = "glyphicon glyphicon-play-circle play-icon";
+    }
+}
+
+//<a onclick="this.firstChild.play"><audio><source src="${preview}"></audio>
+
+
+
+CSS
+
+}
+.play-icon {
+    font-size: 2em;
+    float: left;
+    color: #fff;
+    z-index: 999;
+    position: absolute;
+    margin-left: -53px;
+    margin-top: 5px;
+}
+.play-icon:hover {
+    color: hotpink;
+}

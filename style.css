@@ -1,0 +1,84 @@
+body {
+    background-image: url('images/music-bg.jpg');
+    background-attachment: fixed;
+    background-size: cover;
+}
+.search-bar {
+    margin-top: 4px;
+    margin-left: -11px;
+    text-align: center;
+}
+.title {
+    font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+    color: navy;
+    font-weight: bolder;
+    letter-spacing: 0px;
+    font-size: 4em;
+}
+.btn-search {
+    background: #333;
+    color: #fff;
+    border: 1px solid #ccc;
+    padding-bottom: 2px;
+    font-weight: bold;
+}
+.songs {
+    margin-bottom: 60px;
+}
+.song-container {
+    min-height: 56px;
+    padding: 0px;
+    margin-top: 26px;
+    margin-left: 10px;
+    margin-right: 10px;
+    border-radius: 6px;
+    border-color: #666;
+    background-color: rgba(130,200,255,0.4);
+    box-shadow: 2px 2px 10px grey;
+
+}
+.thumb {
+    height: 60px;
+    width: 60px;
+    border-radius: 6px;
+    float: left;
+    margin: -11px 10px 0px -24px;
+    padding: 0;
+    box-shadow: 2px 2px 10px grey;
+}
+.song-title {
+    font-family: Georgia, 'Times New Roman', Times, serif;
+    font-weight: bold;
+    margin-top: 6px;
+}
+.artist-album {
+    margin-top: -6px;
+    font-family: Georgia, 'Times New Roman', Times, serif;
+    font-size: 1em;
+}
+.album-name {
+    font-style: italic;
+
+}
+.right-song-info {
+    text-align: right;
+    margin-top: 4px;
+    margin-right: 0px;
+    font-family: Georgia, 'Times New Roman', Times, serif;
+}
+.play-icon, .play-icon a {
+    font-size: 1.5em;
+    color: #000;
+}
+.play-icon:hover {
+    color: deeppink;
+    cursor: pointer;
+}
+.play-icon:visited {
+    color: #666;
+}
+.price {
+    font-family: Arial, Helvetica, sans-serif;
+    margin-right: 4px;
+    margin-top: 4px;
+}

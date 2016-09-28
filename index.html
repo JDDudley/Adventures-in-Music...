@@ -1,0 +1,36 @@
+<html>
+  <head>
+    <title>Adventures in Music</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css"/>
+    <link rel="stylesheet" href="style.css">
+    <script src="https://code.jquery.com/jquery-2.2.3.min.js"></script>
+    <script src="itunes-service.js"></script>
+    <script src="app.js"></script>
+  </head>
+  <body>
+        <!--DO NOT MODIFY THE ID OR ONCLICK ATTRIBUTES IN THIS FORM-->
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-xs-12 search-bar">
+                    <form class="form-inline">
+                        <div class="input-group">
+                            <input type="text" class="form-control input-sm" id="artist" placeholder="Artist or Song..."  onkeydown="if (event.keyCode == 13) { getMusic(); return false; }"/>
+                            <span class="input-group-btn">
+                                <button type="button" class="btn btn-info btn-search input-sm" id="get-music-button" onclick="getMusic()">SEARCH</button>
+                            </span>
+                        </div>
+                    </form>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-xs-12 col-sm-8 col-md-7 col-lg-7">
+                    <div class="songs">
+                        <ul id="song-list" class="list-group">
+                                <h1 class="title">adventures in music...</h1>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+  </body>
+</html>
