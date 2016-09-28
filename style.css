@@ -9,11 +9,18 @@ body {
     text-align: center;
 }
 .title {
-    font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+    font-family: 'Pacifico', cursive;
     color: navy;
     font-weight: bolder;
     letter-spacing: 0px;
     font-size: 4em;
+    text-align: center;
+    text-shadow: 
+        /*-1px -1px 0 #fff;
+        1px -1px 0 #fff;
+        -1px 1px 0 #fff;
+        1px 1px 0 #fff;*/
+        2px 2px 2px rgb(130,200,255);
 }
 .btn-search {
     background: #333;
