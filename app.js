@@ -15,6 +15,8 @@ function drawSongs(songList){
         var collection = songList[i].collection;
         var price = songList[i].price;
         var preview = songList[i].preview;
+        var genre = songList[i].genre;
+        var collectionURL = songList[i].collectionURL;
 //handle missing album name, add comma separator if present
         if (!collection) {
             collection = '';
@@ -25,7 +27,11 @@ function drawSongs(songList){
         if (!price) {
             price = '';
         } else {
-            price = '$' + price;
+            if (!collectionURL) {
+                price = '$' + price;
+            } else {
+                price = `<a href="${collectionURL}" target="_blank">$${price}</a>`
+            }
         }
 //handle missing music
 //generate html here as well to hide play/pause control if no tune
@@ -37,6 +43,12 @@ function drawSongs(songList){
                                                 <source src="${preview}">
                                             </audio>`
         }
+//add genre if we've got it, because why not?
+        if (!genre) {
+            genre = '';
+        } else {
+            genre = ' (' + genre + ')';
+        }
 //template for html to be written to list
         template += `<li class="list-group-item song-container">
                                 <div class="container-fluid">
@@ -44,7 +56,7 @@ function drawSongs(songList){
                                         <div class="col-xs-9 col-sm-10">
                                             <img src="${albumArt}" class="thumb">
                                             <h4 class="song-title">${title}</h4>
-                                            <p class="artist-album"><span class="artist-name">${artist}</span><span class="album-name">${collection}</span></p>
+                                            <p class="artist-album"><span class="artist-name">${artist}</span><span class="album-name">${collection}</span><span class="genre">${genre}</span></p>
                                         </div>
                                         <div class="col-xs-3 col-sm-2 right-song-info">
                                             ${preview}

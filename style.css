@@ -73,7 +73,7 @@ body {
     margin-top: 4px;
     margin-right: 0px;
     font-family: Georgia, 'Times New Roman', Times, serif;
-    position: relative;
+    /*position: relative;*/
 }
 .play-icon, .play-icon a {
     font-size: 1.5em;
@@ -86,11 +86,21 @@ body {
 .play-icon:visited {
     color: #666;
 }
-.price {
-    font-family: Arial, Helvetica, sans-serif;
+.genre {
+    font-family: Georgia, 'Times New Roman', Times, serif;
     margin-right: 4px;
     margin-top: 4px;
-    position: absolute;
-    bottom: 50;
-    right: 12;
 }
+.price {
+    margin-right: 4px;
+    margin-top: 4px;
+    /*position: absolute;
+    bottom: -40;
+    right: 12;*/
+}
+
+.price a {
+    color: navy;
+}
+
+/*commented out section was meant to set price always bottom right*/

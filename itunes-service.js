@@ -15,7 +15,9 @@ var itunes = {
                       artist: song.artistName,
                       collection: song.collectionName,
                       price: song.collectionPrice,
-                      preview: song.previewUrl
+                      preview: song.previewUrl,
+                      genre: song.primaryGenreName,
+                      collectionURL: song.collectionViewUrl
                     };
                 })
         $('#get-music-button').text('SEARCH');
