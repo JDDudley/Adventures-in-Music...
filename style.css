@@ -58,7 +58,7 @@ body {
     box-shadow: 2px 2px 10px grey;
 }
 .thumb:hover {
-    box-shadow: 2px 2px 20px white;
+    box-shadow: 2px 2px 10px white;
 }
 .img-icon {
     float: left;
