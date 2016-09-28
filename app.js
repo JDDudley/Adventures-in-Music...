@@ -54,6 +54,7 @@ function drawSongs(songList){
                                 <div class="container-fluid">
                                     <div class="row">
                                         <div class="col-xs-9 col-sm-10">
+                                        <span class="glyphicon glyphicon-play-circle img-icon" id="img-button-${i}" onclick="audioController(${i})"></span>
                                             <img src="${albumArt}" class="thumb">
                                             <h4 class="song-title">${title}</h4>
                                             <p class="artist-album"><span class="artist-name">${artist}</span><span class="album-name">${collection}</span><span class="genre">${genre}</span></p>
@@ -85,6 +86,7 @@ function pauseAudio() {
         if (button.className == "glyphicon glyphicon-pause play-icon") {
             audio.pause();
             button.className = "glyphicon glyphicon-play play-icon";
+            document.getElementById(`img-button-${j}`).className = "glyphicon glyphicon-play-circle img-icon";
         }
     }
 }
@@ -92,16 +94,19 @@ function pauseAudio() {
 //also loops through to ensure all other audio is paused before playing requested song
 function audioController(i) {
 //now play or pause requested song
-    audio = document.getElementById(`audio-${i}`);
-    button = document.getElementById(`play-${i}`);
+    audio = document.getElementById(`audio-${i}`); //audio element for this song
+    button = document.getElementById(`play-${i}`); //main play/pause control button on right
+    imgButton = document.getElementById(`img-button-${i}`); //hidden play/pause button on thumbnail
     var curClass = button.className;
     if (curClass == "glyphicon glyphicon-play play-icon") {
         pauseAudio();
         audio.play();
         button.className = "glyphicon glyphicon-pause play-icon";
+        imgButton.className = "glyphicon glyphicon-pause img-icon"
     } else {
         audio.pause();
         button.className = "glyphicon glyphicon-play play-icon";
+        imgButton.className = "glyphicon glyphicon-play-circle img-icon";
     }
 //this is supposedly 'proper code' to handle all cases but not currently working correctly
     // if (audio.paused && audio.currentTime > 0 && !audio.ended) {

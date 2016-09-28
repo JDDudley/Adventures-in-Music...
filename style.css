@@ -29,6 +29,7 @@ body {
     font-weight: bold;
 }
 .songs {
+    margin-top: 60px;
     margin-bottom: 20px;
 }
 .song-container {
@@ -43,6 +44,10 @@ body {
     box-shadow: 2px 2px 10px grey;
 
 }
+.song-container:hover {
+    background-color: rgba(130,200,255,0.6);
+    border-color: #000;
+}
 .thumb {
     height: 60px;
     width: 60px;
@@ -51,6 +56,25 @@ body {
     margin: -11px 10px 0px -24px;
     padding: 0;
     box-shadow: 2px 2px 10px grey;
+}
+.thumb:hover {
+    box-shadow: 2px 2px 20px white;
+}
+.img-icon {
+    float: left;
+    position: absolute;
+    left: 8px;
+    top: 6px;
+    z-index: 500;
+    font-size: 2em;
+    color: #fff;
+    opacity: 0;
+    text-shadow:
+        2px 2px 10px #000;
+}
+.img-icon:hover {
+    opacity: 100;
+    cursor: pointer;
 }
 .song-title {
     font-family: Georgia, 'Times New Roman', Times, serif;
