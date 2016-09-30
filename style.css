@@ -1,7 +1,7 @@
 body {
     background-image: url('images/bg-crop.jpg');
-    background-attachment: fixed;
-    background-size: cover;
+    background-attachment: fixed !important;
+    background-size: cover !important;
 }
 .search-bar {
     margin-top: 4px;
