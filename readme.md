@@ -47,18 +47,18 @@ Then make sure you take the `entire song object` and pass it to your `myTunes.ad
 ```
 
 Requirements:
-- `2.5 points`: All songs are drawn to the page with an extra button
-- `5 points`: Entire song objects are passed to the myTunesService
-- `2.5 points`: Once a song is sent to the `myTunes` it needs to be added to the `myTracks` array
+- `2.5 points`: All songs are drawn to the page with an extra button √
+- `5 points`: Entire song objects are passed to the myTunesService √
+- `2.5 points`: Once a song is sent to the `myTunes` it needs to be added to the `myTracks` array √
 
 ###Step 2 - The MyTunes Component `Total Points: 10`
 
 The Mytunes Component is the wow factor for your application. It is here where you can be creative in the way you want to manage your list. You will need to add a few more functions to your controller that will be tied to buttons for each of the songs in your list. 
 
 Key features here will include:
-- `removeTrack`
-- `promoteTrack`
-- `demoteTrack`
+- `removeTrack` √
+- `promoteTrack` √
+- `demoteTrack` √
 
 <div>
   <img src="https://bcw.blob.core.windows.net/public/img/mytunes2.jpg" />
@@ -67,16 +67,16 @@ Key features here will include:
 Also don't forget it would be useless to keep around a list if you couldn't still play the songs.
 
 Requirements:
-- `2.5 points`: Remove Track
-- `2.5 points`: Promote Track
-- `2.5 points`: Demote Track
-- `2.5 points`: Persist your data with local storage
+- `2.5 points`: Remove Track √
+- `2.5 points`: Promote Track √
+- `2.5 points`: Demote Track √
+- `2.5 points`: Persist your data with local storage √
 
 
 ###BONUS - Some enhancing features `Total Points: 5`
 Requirements: 
 - Have your myTunes List slide in and out when wanting to access it
-- Implement dragging to reorder your songs
+- Implement dragging to reorder your songs √
 - Implement a drag to favorites
 
 

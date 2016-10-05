@@ -159,12 +159,26 @@ function toggleFavorite(i) {
     updateMySongs();
 }
 
+function togglePlaylist() {
+    if ($('#toggle-playlist').className == 'glyphicon glyphicon-triangle-right') {
+        $('#my-playlist').slideDown('slow');
+        document.getElementById('toggle-playlist').className = "glyphicon glyphicon-triangle-bottom";
+    } else {
+        $('#my-roster').slideUp('slow');
+        document.getElementById('toggle-playlist').className = "glyphicon glyphicon-triangle-right";
+    }
+}
+
 function updateMySongs() {
     var myTracks = myTunes.getTracks();
     if (myTracks.length < 1) {
-        $('#playlist-title').hide();
+        $('#my-tunes').slideUp("slow",function() {
+            //done
+        });
     } else {
-        $('#playlist-title').show();
+        $('#my-tunes').slideDown("slow",function() {
+            //done
+        });
     }
     drawMySongs(myTracks);
 }
@@ -220,7 +234,7 @@ function deleteSong(i) {
 function loadPlaylist() {
     var playlistName = prompt('What\'s the playlist name?');
     var playlist = myTunes.readPlaylist(playlistName);
-    document.getElementById('playlist-title').innerText = playlistName;
+    document.getElementById('playlist-title').innerHTML = playlistName;
     // $('#playlist-title').innerHTML = playlistName;
     updateMySongs();
 }
@@ -228,7 +242,7 @@ function loadPlaylist() {
 function savePlaylist() {
     var playlistName = prompt('What\'s the playlist name?');
     myTunes.writePlaylist(playlistName);
-    document.getElementById('playlist-title').innerText = playlistName;
+    document.getElementById('playlist-title').innerHTML = playlistName;
     // $('#playlist-title').innerHTML = playlistName;
 }
 
@@ -236,7 +250,9 @@ function savePlaylist() {
 updateMySongs();
 
 $(document).ready(function() {
-    // $('#my-playlist').sortable();
-    // $('#my-playlist').disableSelection();
+    $('#my-playlist').sortable();
+    $('#my-playlist').disableSelection();
+    $('#song-list').sortable();
+    $('#song-list').disableSelection();
     $('#search-title').hide();
 });
