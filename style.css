@@ -46,6 +46,12 @@ body {
     font-weight: bold;
     font-variant: small-caps;
 }
+#search-title {
+    text-decoration: underline;
+    font-weight: bold;
+    font-variant: small-caps;
+    margin-left: 15px;
+}
 .songs {
     margin-top: 60px;
     margin-bottom: 20px;

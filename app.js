@@ -3,7 +3,6 @@ function getMusic(){
   var artist = document.getElementById('artist').value;
   itunes.getMusicByArtist(artist).then(drawSongs);
 }
-
 //make new myTunes service
 var myTunes = new MyTunes();
 
@@ -15,6 +14,8 @@ function drawSongs(songList){
     var template = "";
     curSongs = songList;
     for (var i = 0; i < songList.length; i++) {
+//show title
+    $('#search-title').show();
 //grab information for each song
         var title = songList[i].title;
         var albumArt = songList[i].albumArt;
@@ -234,7 +235,8 @@ function savePlaylist() {
 //if local playlist, draw immediately
 updateMySongs();
 
-// $(document).ready(function() {
-//     $('#my-playlist').sortable();
-//     $('#my-playlist').disableSelection();
-// });
+$(document).ready(function() {
+    // $('#my-playlist').sortable();
+    // $('#my-playlist').disableSelection();
+    $('#search-title').hide();
+});
