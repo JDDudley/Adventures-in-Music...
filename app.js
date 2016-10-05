@@ -4,9 +4,16 @@ function getMusic(){
   itunes.getMusicByArtist(artist).then(drawSongs);
 }
 
+//make new myTunes service
+var myTunes = new MyTunes();
+
+//save songList in global variable for access
+var curSongs = [];
+
 //drawSongs function runs automatically to draw results to screen
 function drawSongs(songList){
     var template = "";
+    curSongs = songList;
     for (var i = 0; i < songList.length; i++) {
 //grab information for each song
         var title = songList[i].title;
@@ -60,6 +67,7 @@ function drawSongs(songList){
                                             <p class="artist-album"><span class="artist-name">${artist}</span><span class="album-name">${collection}</span><span class="genre">${genre}</span></p>
                                         </div>
                                         <div class="col-xs-3 col-sm-2 right-song-info">
+                                            <span class="glyphicon glyphicon-star-empty fav-icon" id="fav-${i}" onclick="toggleFavorite(${i})"></span>
                                             ${preview}
                                             <p class="price">${price}</p>
                                         </div>
@@ -80,7 +88,7 @@ function pauseAudio() {
  * Set to 50 because I think that's the max printed but will this hit a shitload of errors
  * looping through a page where there are only, say, 10 results?
  */
-    for (j=0; j < 50; j++) {
+    for (j=0; j < curSongs.length; j++) {
         var audio = document.getElementById(`audio-${j}`);
         var button = document.getElementById(`play-${j}`);
         if (button.className == "glyphicon glyphicon-pause play-icon") {
@@ -88,6 +96,18 @@ function pauseAudio() {
             button.className = "glyphicon glyphicon-play play-icon";
             document.getElementById(`img-button-${j}`).className = "glyphicon glyphicon-play-circle img-icon";
         }
+    }
+    var myTunesLength = myTunes.getTracks().length;
+    j = 100;
+    for (i=0; i < myTunesLength; i++) {
+        var audio = document.getElementById(`audio-${j}`);
+        var button = document.getElementById(`play-${j}`);
+        if (button.className = "glyphicon glyphicon-pause fav-icons") {
+            audio.pause();
+            button.className = "glyphicon glyphicon-play fav-icons";
+            document.getElementById(`img-button-${j}`).className = "glyphicon glyphicon-play-circle img-icon";
+        }
+        j++;
     }
 }
 //audio controller lets one button switch between play and pause control
@@ -98,22 +118,123 @@ function audioController(i) {
     button = document.getElementById(`play-${i}`); //main play/pause control button on right
     imgButton = document.getElementById(`img-button-${i}`); //hidden play/pause button on thumbnail
     var curClass = button.className;
-    if (curClass == "glyphicon glyphicon-play play-icon") {
-        pauseAudio();
-        audio.play();
-        button.className = "glyphicon glyphicon-pause play-icon";
-        imgButton.className = "glyphicon glyphicon-pause img-icon"
-    } else {
-        audio.pause();
-        button.className = "glyphicon glyphicon-play play-icon";
-        imgButton.className = "glyphicon glyphicon-play-circle img-icon";
+    if (i < 100) { //search result
+        if (curClass == "glyphicon glyphicon-play play-icon") {
+            pauseAudio();
+            audio.play();
+            button.className = "glyphicon glyphicon-pause play-icon";
+            imgButton.className = "glyphicon glyphicon-pause img-icon"
+        } else {
+            audio.pause();
+            button.className = "glyphicon glyphicon-play play-icon";
+            imgButton.className = "glyphicon glyphicon-play-circle img-icon";
+        }
+    } else { //playlist song
+        if (curClass == "glyphicon glyphicon-play fav-icons") {
+            pauseAudio();
+            audio.play();
+            button.className = "glyphicon glyphicon-pause fav-icons";
+            imgButton.className = "glyphicon glyphicon-pause img-icon"
+        } else {
+            audio.pause();
+            button.className = "glyphicon glyphicon-play fav-icons";
+            imgButton.className = "glyphicon glyphicon-play-circle img-icon";
+        }
     }
-//this is supposedly 'proper code' to handle all cases but not currently working correctly
-    // if (audio.paused && audio.currentTime > 0 && !audio.ended) {
-    //     audio.play();
-    //     button.className = "glyphicon glyphicon-pause play-icon";
-    // } else {
-    //     audio.pause();
-    //     button.className = "glyphicon glyphicon-play play-icon";
-    // }
 }
+
+//function toggles whether song drawn to screen is part of mytunes favorites
+//default class for favorite button when empty:
+//    glyphicon glyphicon-star-empty fav-icon
+function toggleFavorite(i) {
+    var favStar = document.getElementById('fav-' + i);
+    if (favStar.className == 'glyphicon glyphicon-star-empty fav-icon') { //not favorite
+        myTunes.addTrack(curSongs[i]);
+        favStar.className = 'glyphicon glyphicon-star fav-icon';
+    } else { //favorite already
+        myTunes.removeTrack(curSongs[i]);
+        favStar.className = 'glyphicon glyphicon-star-empty fav-icon';
+    }
+    updateMySongs();
+}
+
+function updateMySongs() {
+    var myTracks = myTunes.getTracks();
+    if (myTracks.length < 1) {
+        $('#playlist-title').hide();
+    } else {
+        $('#playlist-title').show();
+    }
+    drawMySongs(myTracks);
+}
+//drawMySongs outputs playlist to html
+function drawMySongs(myTracks){
+    var template = '';
+    var j = 100;
+    for (var i = 0; i < myTracks.length; i++) {
+        mySong = myTracks[i];
+//template for html to be written to list
+        template += `<li class="list-group-item fav-container">
+                        <div class="container-fluid">
+                            <div class="row">
+                                <div class="col-xs-8 col-sm-9">
+                                <span class="glyphicon glyphicon-play-circle img-icon" id="img-button-${j}" onclick="audioController(${j})"></span>
+                                    <img src="${mySong.albumArt}" class="thumb">
+                                    <h4 class="song-title">${mySong.title}</h4>
+                                    <p class="artist-album"><span class="artist-name">${mySong.artist}</span>, <span class="album-name">${mySong.collection}</span></p>
+                                </div>
+                                <div class="col-xs-4 col-sm-3 fav-song-controls">
+                                    <span class="glyphicon glyphicon-thumbs-up fav-icons" id="up-fav-${i}" onclick="promoteSong(${i})"></span>
+                                    <span class="glyphicon glyphicon-thumbs-down fav-icons" id="down-fav-${i}" onclick="demoteSong(${i})"></span>
+                                    <span class="glyphicon glyphicon-trash fav-icons" id="trash-fav-${i}" onclick="deleteSong(${i})"></span>
+                                    <span class="glyphicon glyphicon-play fav-icons" id="play-${j}" onclick="audioController(${j})"></span><br>
+                                    <audio id="audio-${j}">
+                                        <source src="${mySong.preview}">
+                                    </audio>
+                                </div>
+                            </div>
+                        </div>
+                    </li>`
+        j++;
+    }
+//write template variable to page
+    document.getElementById('my-playlist').innerHTML = template;
+}
+
+function promoteSong(i) {
+    myTunes.promoteTrack(i);
+    updateMySongs();
+}
+
+function demoteSong(i) {
+    myTunes.demoteTrack(i);
+    updateMySongs();
+}
+
+function deleteSong(i) {
+    myTunes.removeTrackById(i);
+    updateMySongs();
+}
+
+function loadPlaylist() {
+    var playlistName = prompt('What\'s the playlist name?');
+    var playlist = myTunes.readPlaylist(playlistName);
+    document.getElementById('playlist-title').innerText = playlistName;
+    // $('#playlist-title').innerHTML = playlistName;
+    updateMySongs();
+}
+
+function savePlaylist() {
+    var playlistName = prompt('What\'s the playlist name?');
+    myTunes.writePlaylist(playlistName);
+    document.getElementById('playlist-title').innerText = playlistName;
+    // $('#playlist-title').innerHTML = playlistName;
+}
+
+//if local playlist, draw immediately
+updateMySongs();
+
+$(document).ready(function() {
+    $('#my-playlist').sortable();
+    $('#my-playlist').disableSelection();
+});

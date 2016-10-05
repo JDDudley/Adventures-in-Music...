@@ -2,6 +2,7 @@ body {
     background-image: url('images/bg-crop.jpg');
     background-attachment: fixed !important;
     background-size: cover !important;
+    font-family: Georgia, 'Times New Roman', Times, serif;
 }
 .search-bar {
     margin-top: 4px;
@@ -21,12 +22,29 @@ body {
         1px 1px 0 #fff;*/
         2px 2px 2px rgb(130,200,255);
 }
+.load-save-icons {
+    color: black;
+    margin-top: 24px;
+    font-size: 1.5em;
+    text-shadow: 2px 2px 10px grey;
+    text-align: right;
+}
+#load-icon:hover, #save-icon:hover {
+    color: deepskyblue;
+    text-shadow: 2px 2px 10px white;
+    cursor: pointer;
+}
 .btn-search {
     background: #333;
     color: #fff;
     border: 1px solid #ccc;
     padding-bottom: 12px;
     font-weight: bold;
+}
+#playlist-title {
+    text-decoration: underline;
+    font-weight: bold;
+    font-variant: small-caps;
 }
 .songs {
     margin-top: 60px;
@@ -42,7 +60,26 @@ body {
     border-color: #666;
     background-color: rgba(130,200,255,0.4);
     box-shadow: 2px 2px 10px grey;
-
+}
+.fav-container {
+    min-height: 56px;
+    padding: 0px;
+    margin-top: 26px;
+    margin-left: 10px;
+    margin-right: 10px;
+    border-radius: 6px;
+    border-color: #666;
+    background-color: rgba(200,122,180,0.4);
+    box-shadow: 2px 2px 10px grey;
+}
+.fav-container:hover {
+    background-color: rgba(200,122,180,0.6);
+    box-shadow: 2px 2px 20px white;
+    border-color: #000;
+}
+.my-tunes {
+    margin-left: 10px;
+    margin-right: 10px;
 }
 .song-container:hover {
     background-color: rgba(130,200,255,0.6);
@@ -96,6 +133,25 @@ body {
     margin-right: 0px;
     font-family: Georgia, 'Times New Roman', Times, serif;
     /*position: relative;*/
+}
+.fav-song-controls {
+    text-align: right;
+    margin-top: 4px;
+    margin-right: 0px;
+    font-size: 1.5em;
+}
+.fav-icons:hover {
+    color: deepskyblue;
+    cursor: pointer;
+    text-shadow: 2px 2px 10px white;
+}
+.fav-icon {
+    font-size: 1.5em;
+    color: #000;
+}
+.fav-icon:hover {
+    color: deeppink;
+    cursor: pointer;
 }
 .play-icon, .play-icon a {
     font-size: 1.5em;

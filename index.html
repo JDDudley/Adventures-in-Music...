@@ -9,18 +9,14 @@
     <link rel="stylesheet" href="style.css">
     <!--jquery-->
     <script src="https://code.jquery.com/jquery-2.2.3.min.js"></script>
-    <!--itunes api interaction-->
-    <script src="itunes-service.js"></script>
     <!--prevent mobile zoom-->
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
-    <!--custom javascript for drawSongs and audioController-->
-    <script src="app.js"></script>
   </head>
   <body>
         <!--DO NOT MODIFY THE ID OR ONCLICK ATTRIBUTES IN THIS FORM-->
         <div class="container-fluid">
             <div class="row">
-                <div class="col-xs-12 search-bar">
+                <div class="col-xs-12 col-md-10 search-bar">
                     <form class="form-inline">
                         <div class="input-group">
                             <!--use onkeydown on input text box to allow enter/return to run getMusic() function-->
@@ -33,11 +29,30 @@
                 </div>
             </div>
             <div class="row">
+                <!--<div class="col-xs-12 col-sm-8 col-md-7 col-lg-7">
+                    <ul class="list-group" id="my-playlist-draggable">
+                    </ul>
+                </div>-->
+                <div class="col-xs-12 col-sm-8 col-md-7 col-lg-7" id="my-tunes">
+                    <div class="container-fluid">
+                        <div class="row">
+                            <div class="col-xs-9"><h2 id="playlist-title">My Playlist</h2></div>
+                            <div class="col-xs-3 load-save-icons">
+                                <span class="glyphicon glyphicon-download" id="load-icon" onclick="loadPlaylist();"></span>
+                                <span class="glyphicon glyphicon-floppy-disk" id="save-icon" onclick="savePlaylist();"></span>
+                            </div>
+                        </div>
+                    </div>
+                    <ul class="list-group" id="my-playlist">
+                    </ul>
+                </div>
+            </div>
+            <!--search results displayed in this row-->
+            <div class="row">
                 <div class="col-xs-12 col-sm-8 col-md-7 col-lg-7">
                     <div class="songs">
                         <!--this ul will be overwritten with results from search-->
                         <ul id="song-list" class="list-group">
-                            <br><br>
                                 <h1 class="title text-center">adventures</h1>
                                 <h1 class="title text-right"> in music...</h1>
                         </ul>
@@ -45,5 +60,10 @@
                 </div>
             </div>
         </div>
+    <!--itunes api interaction-->
+    <script src="itunes-service.js"></script>
+    <!--custom javascript for drawSongs and audioController-->
+    <script src="mytunes-service.js"></script>
+    <script src="app.js"></script>
   </body>
 </html>

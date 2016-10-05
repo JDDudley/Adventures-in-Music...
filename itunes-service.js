@@ -12,6 +12,7 @@ var itunes = {
                   return {
                       title: song.trackName,
                       albumArt: song.artworkUrl60,
+                      albumArtLrg: song.artworkUrl100,
                       artist: song.artistName,
                       collection: song.collectionName,
                       price: song.collectionPrice,
