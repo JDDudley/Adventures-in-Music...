@@ -184,10 +184,10 @@ function drawMySongs(myTracks){
                                     <p class="artist-album"><span class="artist-name">${mySong.artist}</span>, <span class="album-name">${mySong.collection}</span></p>
                                 </div>
                                 <div class="col-xs-4 col-sm-3 fav-song-controls">
-                                    <span class="glyphicon glyphicon-thumbs-up fav-icons" id="up-fav-${i}" onclick="promoteSong(${i})"></span>
-                                    <span class="glyphicon glyphicon-thumbs-down fav-icons" id="down-fav-${i}" onclick="demoteSong(${i})"></span>
-                                    <span class="glyphicon glyphicon-trash fav-icons" id="trash-fav-${i}" onclick="deleteSong(${i})"></span>
-                                    <span class="glyphicon glyphicon-play fav-icons" id="play-${j}" onclick="audioController(${j})"></span><br>
+                                    <span title="Promote Song" class="glyphicon glyphicon-thumbs-up fav-icons" id="up-fav-${i}" onclick="promoteSong(${i})"></span>
+                                    <span title="Demote Song" class="glyphicon glyphicon-thumbs-down fav-icons" id="down-fav-${i}" onclick="demoteSong(${i})"></span>
+                                    <span title="Remove Song" class="glyphicon glyphicon-trash fav-icons" id="trash-fav-${i}" onclick="deleteSong(${i})"></span>
+                                    <span title="Play Song" class="glyphicon glyphicon-play fav-icons" id="play-${j}" onclick="audioController(${j})"></span><br>
                                     <audio id="audio-${j}">
                                         <source src="${mySong.preview}">
                                     </audio>
@@ -234,7 +234,7 @@ function savePlaylist() {
 //if local playlist, draw immediately
 updateMySongs();
 
-$(document).ready(function() {
-    $('#my-playlist').sortable();
-    $('#my-playlist').disableSelection();
-});
+// $(document).ready(function() {
+//     $('#my-playlist').sortable();
+//     $('#my-playlist').disableSelection();
+// });
