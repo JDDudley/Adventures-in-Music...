@@ -75,12 +75,12 @@ Requirements:
 
 ###BONUS - Some enhancing features `Total Points: 5`
 Requirements: 
-- Have your myTunes List slide in and out when wanting to access it
+- Have your myTunes List slide in and out when wanting to access it √
 - Implement dragging to reorder your songs √
 - Implement a drag to favorites
 
 
-> Major Stretch Goal: Allow the user to create multiple playlists and manage the songs on each playlist 
+> Major Stretch Goal: Allow the user to create multiple playlists and manage the songs on each playlist √
 
 ###Finished?
 When You are finished please slack the url for your github repo to me with in a DM. You are free to work on this however you like but ultimately it needs to be added to your github.
