@@ -2,7 +2,7 @@ var itunes = {
     getMusicByArtist: function(artist, cb) {
       
       var url = '//bcw-getter.herokuapp.com/?url=';
-      var url2 = 'https://itunes.apple.com/search?term=' + artist;
+      var url2 = 'https://itunes.apple.com/search?media=music&term=' + artist;
       var apiUrl = url + encodeURIComponent(url2);
       
       $('#get-music-button').text('LOADING....');
@@ -18,8 +18,7 @@ var itunes = {
                       price: song.collectionPrice,
                       preview: song.previewUrl,
                       genre: song.primaryGenreName,
-                      collectionURL: song.collectionViewUrl,
-                      id: song.trackId
+                      collectionURL: song.collectionViewUrl
                     };
                 })
         $('#get-music-button').text('SEARCH');
