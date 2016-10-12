@@ -58,7 +58,7 @@ function drawSongs(songList){
             genre = ' (' + genre + ')';
         }
     //template for html to be written to list
-        template += `<li class="list-group-item song-container" id="${i}" draggable="true" ondragend="dragEnd(event)" ondragstart="dragStart(event)">
+        template += `<li class="list-group-item song-container" id="${i}" draggable="true" ondragenter="dragEnter(event)" ondragstart="dragStart(event)">
                                 <div class="container-fluid">
                                     <div class="row">
                                         <div class="col-xs-9 col-sm-10">
@@ -195,7 +195,7 @@ function drawMySongs(myTracks){
         //                 </div>
         //             </li>`
 
-        template += `<li class="list-group-item fav-container" id="${myTracks.id}" draggable="true" ondragend="dragEnd(event)" ondragstart="dragStart(event)">
+        template += `<li class="list-group-item fav-container" id="${mySong.id}" draggable="true" ondragenter="dragEnter(event)" ondragstart="dragStart(event)">
                                 <div class="fav-song-controls">
                                     <span title="Promote Song" class="glyphicon glyphicon-thumbs-up fav-icons" id="up-fav-${i}" onclick="promoteSong(${i})"></span>
                                     <span title="Demote Song" class="glyphicon glyphicon-thumbs-down fav-icons" id="down-fav-${i}" onclick="demoteSong(${i})"></span>
@@ -294,7 +294,7 @@ updateMySongs();
         return false;
     } 
 
-    function dragEnd(e) {
+    function dragEnter(e) {
         if (e.target.parentNode.className == 'list-group play-list') { //if target correct
             if (source.className == 'list-group-item song-container') { //add to playlist
                 toggleFavorite(source.id);

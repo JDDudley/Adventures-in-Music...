@@ -35,7 +35,7 @@ function MyTunes() {
         console.log(items);
         var tempList = [];
         for (i=0; i < items.length; i++) {
-            var id = items.id
+            var id = items[i].id
             for (j = 0; j < myTracks.length; j++) {
                 if (myTracks[j].id == id) {
                     tempList[i] = myTracks[j];
