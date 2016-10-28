@@ -1,4 +1,4 @@
-const whiteList = ['http://localhost:6988', 'http://jddudley.github.io/'];
+const whiteList = ['http://localhost:6988', 'http://jddudley.github.io/', 'http://jddudley.github.io/AdventuresInMusic', 'http://jddudley.github.io/AdventuresInMusic/public'];
 const corsOptions = {
     origin: function(origin, callback) {
         var isWhiteListed = whiteList.indexOf(origin) !== -1;
