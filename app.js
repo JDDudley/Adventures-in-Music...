@@ -231,19 +231,55 @@ function deleteSong(i) {
     updateMySongs();
 }
 
+// function loadPlaylist() {
+//     var playlistName = prompt('What\'s the playlist name?');
+//     var playlist = myTunes.readPlaylist(playlistName);
+//     document.getElementById('playlist-title').innerHTML = playlistName;
+//     // $('#playlist-title').innerHTML = playlistName;
+//     updateMySongs();
+// }
+
+// function savePlaylist() {
+//     var playlistName = prompt('What\'s the playlist name?');
+//     myTunes.writePlaylist(playlistName);
+//     document.getElementById('playlist-title').innerHTML = playlistName;
+//     // $('#playlist-title').innerHTML = playlistName;
+// }
+
 function loadPlaylist() {
-    var playlistName = prompt('What\'s the playlist name?');
-    var playlist = myTunes.readPlaylist(playlistName);
-    document.getElementById('playlist-title').innerHTML = playlistName;
-    // $('#playlist-title').innerHTML = playlistName;
-    updateMySongs();
+    myTunes.getPlaylists(printPlaylists);
 }
 
-function savePlaylist() {
-    var playlistName = prompt('What\'s the playlist name?');
-    myTunes.writePlaylist(playlistName);
-    document.getElementById('playlist-title').innerHTML = playlistName;
-    // $('#playlist-title').innerHTML = playlistName;
+function loadThisPlaylist(id) {
+    myTunes.getPlaylistById(id,printThisPlaylist);
+}
+
+function printThisPlaylist(data) {
+    console.log('received data back...');
+    $('.playlist-popup').slideUp();
+    var playlistName = data.name;
+    if (Array.isArray(data.songs)) {
+        drawSongs(data.songs);
+    } else {
+        var out = [];
+        for (key in data.songs) {
+            out.push(data.songs[key]);
+        }
+        drawSongs(out);
+    }
+}
+function printPlaylists(playlists) {
+    console.log(playlists);
+    $('.playlist-popup').slideDown();
+    var template = '';
+    for (i = 0; i < playlists.length; i++) {
+        template += `<li class="list-group-item" onclick="loadThisPlaylist('${playlists[i].id}')">${playlists[i].name}</li>`;
+    }
+    $('#playlist-list').html(template);
+}
+
+function closePopup() {
+    $('.playlist-popup').slideUp();
 }
 
 function saveToServer() {
@@ -333,4 +369,6 @@ $(document).ready(function() {
     // $('#song-list').sortable();
     // $('#song-list').disableSelection();
     $('#search-title').hide();
+    $('.playlist-popup').hide();
+    $('.save-popup').hide();
 });

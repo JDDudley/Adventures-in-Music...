@@ -7,13 +7,21 @@
     <link href="https://fonts.googleapis.com/css?family=Pacifico" rel="stylesheet">
     <!--custom stylesheet-->
     <link rel="stylesheet" href="style.css">
-    <!--jquery-->
-    <script src="https://code.jquery.com/jquery-2.2.3.min.js"></script>
     <!--prevent mobile zoom-->
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
   </head>
   <body>
         <!--DO NOT MODIFY THE ID OR ONCLICK ATTRIBUTES IN THIS FORM-->
+        <div class="playlist-popup">
+            <i class="glyphicon glyphicon-remove close-popup" onclick="closePopup();"></i>
+            <ul class="list-group" id="playlist-list">
+            </ul>
+        </div>
+        <div class="save-popup">
+            <i class="glyphicon glyphicon-remove close-popup" onclick="closePopup();"></i>
+            <input type="text" class="form-control" id="playlist-name"><br><br>
+            <button type="button" class="btn btn-default" id="playlist-save">Save Playlist</button>
+        </div>
         <div class="container-fluid">
             <div class="row">
                 <div class="col-xs-12 col-md-10 search-bar">
@@ -28,16 +36,17 @@
                     </form>
                 </div>
             </div>
+            <div class="row" id="playlist-controls">
+                <div class="col-xs-12 col-sm-8 col-md-7">
+                    <span class="glyphicon glyphicon-floppy-open" title="Load Playlist" id="load-icon" onclick="loadPlaylist();"></span>
+                    <span class="glyphicon glyphicon-floppy-save" title="Save Playlist" id="save-icon" onclick="savePlaylist();"></span>
+                </div>
+            </div>
             <div class="row">
                 <div class="col-xs-12 col-sm-8 col-md-7 col-lg-7" id="my-tunes">
                     <div class="container-fluid">
                         <div class="row">
-                            <div class="col-xs-9"><h2 id="playlist-title">My Playlist</h2></div>
-                            <div class="col-xs-3 load-save-icons">
-                                <span class="glyphicon glyphicon-download" title="Load Playlist" id="load-icon" onclick="loadPlaylist();"></span>
-                                <span class="glyphicon glyphicon-floppy-disk" title="Save Playlist" id="save-icon" onclick="savePlaylist();"></span>
-                                <span class="glyphicon glyphicon-globe" title="Save to Server" id="server-save-icon" onclick="saveToServer();"></span>
-                            </div>
+                            <div class="col-xs-12"><h2 id="playlist-title">My Playlist</h2></div>
                         </div>
                     </div>
                     <!--playlist results displayed in this list-->
@@ -59,6 +68,8 @@
                 </div>
             </div>
         </div>
+    <!--jquery-->
+    <script src="https://code.jquery.com/jquery-2.2.3.min.js"></script>
     <!--itunes api interaction-->
     <script src="itunes-service.js"></script>
     <!--jquery sortable plugin-->

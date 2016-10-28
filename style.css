@@ -19,6 +19,26 @@ body {
     margin-left: -11px;
     text-align: center;
 }
+.playlist-popup {
+    position: absolute;
+    top: 0;
+    left: 0;
+    text-size: 16px;
+    z-index: 999;
+}
+
+.close-popup {
+    color: red;
+    font-size: 2em;
+    float: right;
+    z-index: 9999;
+}
+.close-popup:hover {
+    cursor: pointer;
+}
+.playlist-list:hover {
+    cursor: pointer;
+}
 .title {
     font-family: 'Pacifico', cursive;
     color: navy;
@@ -32,12 +52,12 @@ body {
         1px 1px 0 #fff;*/
         2px 2px 2px rgb(130,200,255);
 }
-.load-save-icons {
+#playlist-controls, #load-icon, #save-icon {
     color: black;
-    margin-top: 24px;
-    font-size: 1.5em;
+    margin: 0px;
+    font-size: 1.8em;
     text-shadow: 2px 2px 10px grey;
-    text-align: right;
+    text-align: center;
 }
 #load-icon:hover, #save-icon:hover, #server-save-icon:hover {
     color: deepskyblue;

@@ -100,15 +100,30 @@ function MyTunes() {
 
     this.writeToServer = function(playlistName) {
         console.log('writing to server...');
+        console.log(myTracks);
+        var songObj = {};
+        for (i = 0; i < myTracks.length; i++) {
+            songObj[myTracks[i].id] = myTracks[i];
+        }
         var thisPlaylist = {
             downvotes: 0,
             name: playlistName,
-            songs: myTracks,
+            songs: songObj,
             upvotes: 1001
         }
-        $.post('/AdventuresInMusic/api/playlists', thisPlaylist, function(playlist){
+        $.post('https://adventures-in-music.herokuapp.com/api/playlists', thisPlaylist, function(playlist){
             return playlist;
         });
+    }
+
+    this.getPlaylists = function(cb) {
+        console.log('getting playlists...');
+        $.get('https://adventures-in-music.herokuapp.com/api/playlists', cb)
+    }
+
+    this.getPlaylistById = function(id, cb) {
+        console.log('getting playlist ' + id);
+        $.get('https://adventures-in-music.herokuapp.com/api/playlists/' + id, cb)
     }
 
     this.readPlaylist = function(playlistName) {
