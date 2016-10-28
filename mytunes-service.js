@@ -18,7 +18,7 @@ function MyTunes() {
                 myTracks.splice(i,1);
             }
         }
-        console.log(myTracks);
+        // console.log(myTracks);
         saveTracks();
     }
 
@@ -27,17 +27,50 @@ function MyTunes() {
         saveTracks();
     }
 
-    this.promoteTrack = function(i){
+//these functions work great but not compatible with drag and drop reordering
+
+    function updateTracks() {
+        var mySongList = document.getElementById('my-playlist');
+        var items = mySongList.getElementsByTagName('li');
+        console.log(items);
+        var tempList = [];
+        for (i=0; i < items.length; i++) {
+            var id = items[i].id
+            for (j = 0; j < myTracks.length; j++) {
+                if (myTracks[j].id == id) {
+                    tempList[i] = myTracks[j];
+                }
+            }
+        }
+        console.log(myTracks);
+        console.log(tempList);
+        myTracks = tempList;
+    }
+
+    this.promoteTrack = function(i) {
+        updateTracks();
         if (i > 0) {
             myTracks.splice(i-1,0,myTracks.splice(i,1)[0]);
             saveTracks();
         }
-    }
 
+    }
     this.demoteTrack = function(i){
+        updateTracks();
         myTracks.splice(i+1,0,myTracks.splice(i,1)[0]);
         saveTracks();
     }
+    // this.promoteTrack = function(i){
+    //     if (i > 0) {
+    //         myTracks.splice(i-1,0,myTracks.splice(i,1)[0]);
+    //         saveTracks();
+    //     }
+    // }
+
+    // this.demoteTrack = function(i){
+    //     myTracks.splice(i+1,0,myTracks.splice(i,1)[0]);
+    //     saveTracks();
+    // }
 
 
     //localStorage
@@ -51,7 +84,8 @@ function MyTunes() {
         var localTracks = localStorage.getItem('trackData');
         if (localTracks) {
             console.log('Loading track data from localstorage...');
-            return JSON.parse(localTracks);
+            // return JSON.parse(localTracks);
+            return [];
         } else {
             return [];
         }
