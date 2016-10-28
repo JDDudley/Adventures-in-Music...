@@ -10,7 +10,7 @@ let express = require('express'),
 server.use(bodyParser.json())
 server.use(bodyParser.urlencoded({ extended: true}))
 
-server.use('/', express.static(`${__dirname}/public`))
+server.use('/', express.static(`${__dirname}/`))
 server.use('/api', cors(handlers.corsOptions), routes.router)
 
 server.listen(port, function() {
