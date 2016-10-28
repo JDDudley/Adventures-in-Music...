@@ -39,7 +39,7 @@ body {
     text-shadow: 2px 2px 10px grey;
     text-align: right;
 }
-#load-icon:hover, #save-icon:hover {
+#load-icon:hover, #save-icon:hover, #server-save-icon:hover {
     color: deepskyblue;
     text-shadow: 2px 2px 10px white;
     cursor: pointer;
