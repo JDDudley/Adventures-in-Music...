@@ -246,10 +246,17 @@ function savePlaylist() {
     // $('#playlist-title').innerHTML = playlistName;
 }
 
+function saveToServer() {
+    var playlistName = prompt('What\'s the playlist name?');
+    myTunes.writeToServer(playlistName);
+}
+
 //if local playlist, draw immediately
 updateMySongs();
 
 $(document).ready(function() {
+    $('#playlist-title').hide();
+    $('#search-title').hide();
     $('#my-playlist').sortable();
     $('#my-playlist').disableSelection();
     $('#song-list').sortable();

@@ -64,6 +64,19 @@ function MyTunes() {
         localStorage.setItem('myPlaylists', JSON.stringify(myPlaylists));
     }
 
+    this.writeToServer = function(playlistName) {
+        console.log('writing to server...');
+        var thisPlaylist = {
+            downvotes: 0,
+            name: playlistName,
+            songs: myTracks,
+            upvotes: 1001
+        }
+        $.post('http://localserver:6988/playlists', thisPlaylist, function(playlist){
+            return playlist;
+        });
+    }
+
     this.readPlaylist = function(playlistName) {
         console.log('loading playlists from localStorage...');
         myPlaylists = JSON.parse(localStorage.getItem('myPlaylists'));
