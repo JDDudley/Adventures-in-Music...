@@ -106,7 +106,7 @@ function MyTunes() {
             songs: myTracks,
             upvotes: 1001
         }
-        $.post('http://localserver:6988/playlists', thisPlaylist, function(playlist){
+        $.post('https://jddudley.github.io/music-api/playlists', thisPlaylist, function(playlist){
             return playlist;
         });
     }
