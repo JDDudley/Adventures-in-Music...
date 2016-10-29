@@ -246,7 +246,7 @@ function deleteSong(i) {
 //     // $('#playlist-title').innerHTML = playlistName;
 // }
 
-function loadPlaylist() {
+function loadPlaylists() {
     myTunes.getPlaylists(printPlaylists);
 }
 
@@ -269,13 +269,55 @@ function printThisPlaylist(data) {
     }
 }
 function printPlaylists(playlists) {
-    console.log(playlists);
+    playlists = siftPlaylists(playlists);
     $('.playlist-popup').slideDown();
     var template = '';
     for (i = 0; i < playlists.length; i++) {
         template += `<li class="list-group-item" onclick="loadThisPlaylist('${playlists[i].id}')">${playlists[i].name}</li>`;
     }
     $('#playlist-list').html(template);
+}
+
+
+//USAGE:    Accepts results of playlist GET request as input and
+//          returns in same format.
+//OUTPUT:   Checks all playlist song lists to see if mock data,
+//          removes caught mock songs and returns array of only
+//          playlists that contain at least one real song. These
+//          playlists' song lists are stripped of mock data.
+//EXAMPLE
+//USAGE:    playlists = siftPlaylists(playlists)
+//**OR**    playlists = siftPlaylists(resultingDataFromGetRequest);
+//
+function siftPlaylists(playlists) {
+    var goodPlaylists = [];
+    for (i = 0; i < playlists.length; i++) {
+        var pl = playlists[i];
+        var songs = {};
+        var cnt = 0;
+        if (Array.isArray(pl.songs)) { //if is array
+            for (j = 0; j < pl.songs.length; j++) { //for each song
+                var song = pl.songs[j];
+                if (song.id && song.title && song.artist) { //looks valid
+                    songs[song.id] = song; //save to object
+                    cnt++; //increment counter
+                }
+            }
+        } else { //should be object
+            for (key in pl.songs) { //for each song
+                var song = pl.songs[key];
+                if (song.id && song.title && song.artist) { //looks valid
+                    songs[song.id] = song;
+                    cnt++; //increment counter
+                }
+            }
+        }
+        if (cnt) {
+            pl.songs = songs;
+            goodPlaylists.push(pl);
+        }
+    }
+    return goodPlaylists;
 }
 
 function closePopup() {
