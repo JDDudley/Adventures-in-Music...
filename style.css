@@ -26,17 +26,24 @@ body {
     text-size: 16px;
     z-index: 999;
 }
+.playlist-table {
+    background-color: #333;
+    color: #e8e8e8;
+    border-radius: 6px;
+    box-shadow: 4px 4px 10px black;
+}
 
 .close-popup {
     color: red;
     font-size: 2em;
     float: right;
     z-index: 9999;
+    text-shadow: 2px 2px 4px black;
 }
 .close-popup:hover {
     cursor: pointer;
 }
-.playlist-list:hover {
+.playlist-list > li:hover {
     cursor: pointer;
 }
 .title {
@@ -52,17 +59,24 @@ body {
         1px 1px 0 #fff;*/
         2px 2px 2px rgb(130,200,255);
 }
-#playlist-controls, #load-icon, #save-icon {
+#playlist-controls, #load-icon, #save-icon, #up-icon, #down-icon {
     color: black;
-    margin: 0px;
+    margin-top: 12px;
     font-size: 1.8em;
-    text-shadow: 2px 2px 10px grey;
+    text-shadow: 2px 2px 10px white;
     text-align: center;
 }
-#load-icon:hover, #save-icon:hover, #server-save-icon:hover {
+.inactive {
+    color: gray !important;
+}
+#load-icon:hover, #save-icon:hover, #up-icon:hover, #down-icon:hover {
     color: deepskyblue;
     text-shadow: 2px 2px 10px white;
     cursor: pointer;
+}
+.inactive:hover {
+    cursor: not-allowed !important;
+    color: gray !important;
 }
 .btn-search {
     background: #333;

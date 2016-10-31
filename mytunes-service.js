@@ -22,12 +22,14 @@ function MyTunes() {
         saveTracks();
     }
 
+    this.postPlaylist = function(songs) {
+        myTracks = songs;
+    }
+
     this.removeTrackById = function(i){
         myTracks.splice(i,1);
         saveTracks();
     }
-
-//these functions work great but not compatible with drag and drop reordering
 
     function updateTracks() {
         var mySongList = document.getElementById('my-playlist');
@@ -121,10 +123,46 @@ function MyTunes() {
         $.get('https://adventures-in-music.herokuapp.com/api/playlists', cb)
     }
 
-    this.getPlaylistById = function(id, cb) {
-        console.log('getting playlist ' + id);
-        $.get('https://adventures-in-music.herokuapp.com/api/playlists/' + id, cb)
+    this.upvotePlaylist = function(id) {
+        console.log('Upvoting playlist #' + id);
+        $.get('https://adventures-in-music.herokuapp.com/api/playlists/' + id, function(data) {
+            var upvotes = data.upvotes;
+            console.log(upvotes);
+            upvotes++;
+            $.ajax({
+                url: 'https://adventures-in-music.herokuapp.com/api/playlists/' + id,
+                type: 'PUT',
+                data: {"upvotes": upvotes}
+            })
+        });
     }
+
+    this.downvotePlaylist = function(id) {
+        console.log('Downvoting playlist #' + id);
+        $.get('https://adventures-in-music.herokuapp.com/api/playlists/' + id, function(data) {
+            var downvotes = data.downvotes;
+            console.log(downvotes);
+            downvotes++;
+            $.ajax({
+                url: 'https://adventures-in-music.herokuapp.com/api/playlists/' + id,
+                type: 'PUT',
+                data: {"downvotes": downvotes}
+            });
+        })
+    }
+
+    this.updatePlaylist = function(id, songs) {
+        $.ajax({
+            url: 'https://adventures-in-music.herokuapp.com/api/playlists/' + id,
+            type: 'PUT',
+            data: {"songs": songs}
+        });
+    }
+
+    // this.getPlaylistById = function(id, cb) {
+    //     console.log('getting playlist ' + id);
+    //     $.get('https://adventures-in-music.herokuapp.com/api/playlists/' + id, cb)
+    // }
 
     this.readPlaylist = function(playlistName) {
         console.log('loading playlists from localStorage...');

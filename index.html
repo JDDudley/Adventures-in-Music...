@@ -14,8 +14,19 @@
         <!--DO NOT MODIFY THE ID OR ONCLICK ATTRIBUTES IN THIS FORM-->
         <div class="playlist-popup">
             <i class="glyphicon glyphicon-remove close-popup" onclick="closePopup();"></i>
-            <ul class="list-group" id="playlist-list">
-            </ul>
+            <!--<ul class="list-group" id="playlist-list">
+            </ul>-->
+            <table class="table playlist-table">
+                <thead>
+                    <tr>
+                        <th>Playlist</th>
+                        <th>Upvotes</th>
+                        <th>Downvotes</th>
+                    </tr>
+                </thead>
+                <tbody id="playlist-list">
+                </tbody>
+            </table>
         </div>
         <div class="save-popup">
             <i class="glyphicon glyphicon-remove close-popup" onclick="closePopup();"></i>
@@ -40,6 +51,8 @@
                 <div class="col-xs-12 col-sm-8 col-md-7">
                     <span class="glyphicon glyphicon-floppy-open" title="Load Playlist" id="load-icon" onclick="loadPlaylists();"></span>
                     <span class="glyphicon glyphicon-floppy-save" title="Save Playlist" id="save-icon" onclick="savePlaylist();"></span>
+                    <span class="glyphicon glyphicon-thumbs-up inactive" title="Upvote Playlist" id="up-icon" onclick="upvotePlaylist();"></span>
+                    <span class="glyphicon glyphicon-thumbs-down inactive" title="Downvote Playlist" id="down-icon" onclick="downvotePlaylist();"></span>
                 </div>
             </div>
             <div class="row">
@@ -76,6 +89,7 @@
     <!--<script src="jquery-sortable.js"></script>-->
     <!--custom javascript for drawSongs and audioController-->
     <script src="mytunes-service.js"></script>
+    <script src="controller.js"></script>
     <script src="app.js"></script>
   </body>
 </html>
