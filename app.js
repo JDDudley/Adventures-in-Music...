@@ -28,7 +28,7 @@ function pauseAudio() {
             document.getElementById(`img-button-${j}`).className = "glyphicon glyphicon-play-circle img-icon";
         }
     }
-    var myTunesLength = myTunes.getTracks().length;
+    var myTunesLength = myPlaylist.length;
     for (var i=100; i < myTunesLength; i++) {
         var audio = document.getElementById(`audio-${i}`);
         var button = document.getElementById(`play-${i}`);
