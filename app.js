@@ -213,12 +213,14 @@ function sortPlaylists(array, criteria) {
 
 function closePopup() {
     $('.playlist-popup').slideUp();
+    $('.save-popup').slideUp();
 }
 
 function savePlaylist() {
+    $('.save-popup').slideDown();
     //need popup and logging of name, check if this is existing or new?
-    var playlistName = prompt('What\'s the playlist name?');
-    myTunes.writeToServer(playlistName);
+    // var playlistName = prompt('What\'s the playlist name?');
+    // myTunes.writeToServer(playlistName);
 }
 
     var source;

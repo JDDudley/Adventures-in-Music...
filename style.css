@@ -23,7 +23,7 @@ body {
     position: absolute;
     top: 0;
     left: 0;
-    text-size: 16px;
+    font-size: 16px;
     z-index: 999;
 }
 .playlist-table {
@@ -37,6 +37,11 @@ body {
     color: #e8e8e8;
     border-radius: 6px;
     box-shadow: 4px 4px 10px black;
+    position: absolute;
+    top: 0;
+    left: 200px;
+    font-size: 16px;
+    z-index: 999;
 }
 
 .close-popup {
