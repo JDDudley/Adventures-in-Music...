@@ -32,6 +32,12 @@ body {
     border-radius: 6px;
     box-shadow: 4px 4px 10px black;
 }
+.save-popup {
+    background-color: #333;
+    color: #e8e8e8;
+    border-radius: 6px;
+    box-shadow: 4px 4px 10px black;
+}
 
 .close-popup {
     color: red;
